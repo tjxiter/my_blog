@@ -50,6 +50,10 @@ def about_me(request):
     return render(request, 'aboutme.html')
 
 
+def value_blogs(request):
+    return render(request, 'value_blogs.html')
+
+
 def blog_search(request):
     if 's' in request.GET:
         s = request.GET['s']
