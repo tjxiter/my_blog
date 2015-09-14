@@ -6,8 +6,13 @@ from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.http import Http404
 
-from article.models import Article
+from article.models import Article, Tag
 
+
+def get_tag_list():
+    tags = Tag.objects.all()
+    return tags
+       
 
 def home(request):
     posts = Article.objects.all()
@@ -19,7 +24,7 @@ def home(request):
         post_list = paginator.page(1)
     except EmptyPage:
         post_list = paginator.paginator(paginator.num_args)
-    return render(request, 'home.html', {'post_list': post_list})
+    return render(request, 'home.html', {'post_list': post_list, 'tag_list': get_tag_list()})
 
 
 def detail(request, id):
@@ -35,7 +40,7 @@ def archives(request):
         post_list = Article.objects.all()
     except Article.DoesNotExist:
         raise Http404
-    return render(request, 'archives.html', {'post_list': post_list, 'error': False})
+    return render(request, 'archives.html', {'post_list': post_list, 'error': False, 'tag_list': get_tag_list()})
 
 
 def search_tag(request, tag):
@@ -43,7 +48,7 @@ def search_tag(request, tag):
         post_list = Article.objects.filter(category__iexact=tag)
     except Article.DoesNotExist:
         raise Http404
-    return render(request, 'tag.html', {'post_list': post_list})
+    return render(request, 'tag.html', {'post_list': post_list, 'tag_list': get_tag_list()})
 
 
 def about_me(request):
@@ -51,7 +56,7 @@ def about_me(request):
 
 
 def value_blogs(request):
-    return render(request, 'value_blogs.html')
+    return render(request, 'value_blogs.html', {'tag_list': get_tag_list()})
 
 
 def blog_search(request):
@@ -62,9 +67,9 @@ def blog_search(request):
         else:
             post_list = Article.objects.filter(title__icontains=s)
             if len(post_list) == 0:
-                return render(request, 'archives.html', {'post_list': post_list, 'error': True})
+                return render(request, 'archives.html', {'post_list': post_list, 'error': True, 'tag_list': get_tag_list()})
             else:
-                return render(request, 'archives.html', {'post_list': post_list, 'error': False})
+                return render(request, 'archives.html', {'post_list': post_list, 'error': False, 'tag_list': get_tag_list()})
     return redirect('/')
 
 
