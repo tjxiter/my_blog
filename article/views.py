@@ -11,7 +11,7 @@ from article.models import Article
 
 def home(request):
     posts = Article.objects.all()
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 3)
     page = request.GET.get('page')
     try:
         post_list = paginator.page(page)
