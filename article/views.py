@@ -52,7 +52,7 @@ def search_tag(request, tag):
 
 
 def about_me(request):
-    return render(request, 'aboutme.html')
+    return render(request, 'aboutme.html', {'tag_list': get_tag_list()})
 
 
 def value_blogs(request):
