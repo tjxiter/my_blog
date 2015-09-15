@@ -5,13 +5,10 @@
 <div class="posts">
         <section class="post">
             <header class="post-header">
-                    <h2> class="button-success pure-button" style="font-size: 22px">{{ post.title }}</h2>
+                    <h2 style="font-size: 22px">{{ post.title }}</h2>
                     <p class="post-meta">
                     Time: {{ post.date_time|date:"D d M Y"}}
-                    <style scoped>
-                    .button-success {background: rgb(255, 255, 255)}
-                    </style>
-                    <a class="button-success pure-button" href="{% url "search_tag" tag=post.category %}">{{ post.category|title }}</a>
+                    <a href="{% url "search_tag" tag=post.category %}">{{ post.category|title }}</a>
                     </p>
             </header>
 

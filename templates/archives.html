@@ -8,14 +8,11 @@
     {% for post in post_list %}
         <section class="post">
             <header class="post-header">
-                <h2><a class="button-success pure-button" style="font-size: 22px" href="{% url "detail" id=post.id %}">{{ post.title }}</a></h2
+                <h2><a style="font-size: 22px" href="{% url "detail" id=post.id %}">{{ post.title }}</a></h2>
 
                 <p class="post-meta">
                 Time: {{ post.date_time |date:"D d M Y"}}
-                <style scoped>
-                .button-success {background: rgb(255, 255, 255)}
-                </style>
-                <a class="button-success pure-button" href="{% url "search_tag" tag=post.category %}">{{ post.category|title }}</a>
+                <a href="{% url "search_tag" tag=post.category %}">{{ post.category|title }}</a>
                 </p>
             </header>
         </section>
