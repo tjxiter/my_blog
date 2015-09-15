@@ -1,0 +1,15 @@
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+    margin: 100px 200px 10px 10px;
+}
+
+.block {
+    display: block;
+    float: left;
+    background-color: #87CEEB;
+    width: 100%;
+}

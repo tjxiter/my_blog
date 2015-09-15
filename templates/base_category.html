@@ -2,6 +2,9 @@
 {% extends "base.html" %}
 
 {% block category %}
+
+{% load static %}
+<link href="{% static 'css/blog.css' %} " rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <!-- Optional theme -->
@@ -20,8 +23,9 @@ div#category {height: 1400px; width:300px; float:right; list-style:none; margin-
     <h1 style="font-size: 15px; margin-left:14px">Tags</h1>
     {% for tag in tag_list %}
         <li>
-        <a class="button-success pure-button" href="{% url "search_tag" tag=tag.name %}">{{ tag.name }}<span class="text-right">{{ tag.num }}</span></a>
+        <a class="list-group-item category-list" href="{% url "search_tag" tag=tag.name %}">{{ tag.name }}<span class="pull-right">{{ tag.num }}</span></a>
         </li>
     {% endfor %}
 </div>
+
 {% endblock %}
