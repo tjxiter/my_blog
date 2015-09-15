@@ -16,14 +16,14 @@
 <style type="text/css">
 div#category {height: 1400px; width:300px; float:right; list-style:none; margin-left: 50px; margin-top: 20px}
 </style>
-<div id="category" class="widget">
+<div id="category" class="list-group list-special">
     <style scoped>
         .button-success {background: rgb(255, 255, 255)}
     </style>
     <h1 style="font-size: 15px; margin-left:14px">Tags</h1>
     {% for tag in tag_list %}
         <li>
-        <a class="list-group-item category-list" href="{% url "search_tag" tag=tag.name %}">{{ tag.name }}<span class="pull-right">{{ tag.num }}</span></a>
+        <a class="list-group-item tag-list" href="{% url "search_tag" tag=tag.name %}">{{ tag.name }}<span class="pull-right">{{ tag.num }}&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
         </li>
     {% endfor %}
 </div>

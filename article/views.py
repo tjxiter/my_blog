@@ -16,7 +16,7 @@ def get_tag_list():
 
 def home(request):
     posts = Article.objects.all()
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 4)
     page = request.GET.get('page')
     try:
         post_list = paginator.page(page)
